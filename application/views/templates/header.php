@@ -5,4 +5,4 @@
 		<title></title>
 	</head>
 	<body>
-		<h1>Selamat Datang Pejuang Code</h1>
+		<h1>Selamat Datang di halaman <?php echo $judul ?> Pejuang Code</h1>

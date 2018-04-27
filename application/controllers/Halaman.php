@@ -14,7 +14,9 @@ class Halaman extends CI_Controller {
 			show_404();
 		}
 
-		$this->load->view('templates/header');
+		$data['judul'] = $halaman;
+
+		$this->load->view('templates/header', $data);
 		$this->load->view('pages/' . $halaman);
 		$this->load->view('templates/footer');
 	}
