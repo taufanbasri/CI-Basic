@@ -41,4 +41,21 @@ class News extends CI_Controller {
 
 		$this->load->view('news/view', $data);
 	}
+
+	public function update($id)
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('title', 'Judul', 'required');
+		$this->form_validation->set_rules('text', 'Text', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['news_item'] = $this->news_model->get_news_id($id);
+			$this->load->view('news/update', $data);
+		} else {
+			$this->news_model->update_news($id);
+			redirect('news');
+		}
+	}
 }

@@ -3,4 +3,5 @@
 		<a href="<?php echo site_url('/news/' . $item['slug']); ?>"><?php echo $item['title']; ?></a>
 	</h1>
 	<p><?php echo $item['text'] ?></p>
+	<a href="<?php echo site_url('news/update/' . $item['id']); ?>">Edit</a>
 <?php } ?>

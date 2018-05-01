@@ -37,4 +37,28 @@ class News_model extends CI_Model
 
 		return $query->row_array();
 	}
+
+	public function get_news_id($id = FALSE)
+	{
+		$query = $this->db->get_where('news', ['id' => $id]);
+
+		return $query->row_array();
+	}
+
+	public function update_news($id)
+	{
+		$this->load->helper('url');
+
+		$slug = url_title($this->input->post('title'), 'dash', TRUE);
+
+		$data = [
+			'title' => $this->input->post('title'),
+			'text' => $this->input->post('text'),
+			'slug' => $slug
+		];
+
+		$this->db->where('id', $id);
+
+		return $this->db->update('news', $data);
+	}
 }
