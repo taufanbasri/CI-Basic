@@ -10,6 +10,21 @@ class News_model extends CI_Model
 		$this->load->database();
 	}
 
+	public function set_news()
+	{
+		$this->load->helper('url');
+
+		$slug = url_title($this->input->post('title'), 'dash', TRUE);
+
+		$data = [
+			'title' => $this->input->post('title'),
+			'text' => $this->input->post('text'),
+			'slug' => $slug
+		];
+
+		return $this->db->insert('news', $data);
+	}
+
 	public function get_news($slug = FALSE)
 	{
 		if ($slug == FALSE) {
